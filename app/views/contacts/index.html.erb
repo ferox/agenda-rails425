@@ -21,7 +21,7 @@
       <tr>
         <td><%= contact.name %></td>
         <td><%= contact.email %></td>
-        <td><%= contact.kind.description.presence || '' %></td>
+        <td><%= contact&.kind&.description %></td>
         <td><%= contact.rmk %></td>
         <td><%= link_to t('buttons.show'), contact, class: "btn btn-primary" %></td>
         <td><%= link_to t('buttons.edit'), edit_contact_path(contact), class: "btn btn-primary" %></td>
