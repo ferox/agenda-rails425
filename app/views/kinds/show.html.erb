@@ -1,0 +1,12 @@
+<div class="dark-matter">
+<script>
+  $.notify("<%= notice %>", "success");
+</script>
+<p>
+  <strong><%= Kind.human_attribute_name("description") %>:</strong>
+  <%= @kind.description %>
+</p>
+
+<%= link_to t('buttons.edit'), edit_kind_path(@kind), class: "btn btn-primary" %>
+<%= link_to t('buttons.back'), kinds_path, class: "btn btn-primary" %>
+</div>

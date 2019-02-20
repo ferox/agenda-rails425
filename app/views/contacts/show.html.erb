@@ -1,0 +1,27 @@
+<div class="dark-matter">
+<script>
+  $.notify("<%= notice %>", "success");
+</script>
+<p>
+  <strong><%= @contacts.model.human_attribute_name("name") %>:</strong>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <strong><%= @contacts.model.human_attribute_name("email") %>:</strong>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <strong><%= @contacts.model.human_attribute_name("kind") %>:</strong>
+  <%= @contact.kind.description %>
+</p>
+
+<p>
+  <strong><%= @contacts.model.human_attribute_name("rmk") %>:</strong>
+  <%= @contact.rmk %>
+</p>
+
+<%= link_to t('buttons.edit'), edit_contact_path(@contact), class: "btn btn-primary" %>
+<%= link_to t('buttons.back'), contacts_path, class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,33 @@
+<div class="dark-matter">
+<p id="notice"><%= notice %></p>
+
+<h1><%= "#{t('headers.address')} #{@addresses.model.model_name.human(count: @addresses.count)}" %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= @addresses.model.human_attribute_name("street") %></th>
+      <th><%= @addresses.model.human_attribute_name("city") %></th>
+      <th><%= @addresses.model.human_attribute_name("state") %></th>
+      <th><%= @addresses.model.human_attribute_name("contact") %></th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @addresses.each do |address| %>
+      <tr>
+        <td><%= address.street %></td>
+        <td><%= address.city %></td>
+        <td><%= address.state %></td>
+        <td><%= address.contact.try(:name) %></td>
+        <td><%= link_to t('buttons.show'), address, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= paginate @addresses %>
+<br>
+<%= link_to t('buttons.home'), root_path, class: "btn btn-primary" %>
+</div>

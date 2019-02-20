@@ -1,0 +1,61 @@
+<%= form_for(@contact, html: { class: "dark-matter" }) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= "#{pluralize(@contact.errors.count, 'error')} #{t('messages.errors')}:" %></h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+      <br><br>
+    </div>
+  <% end %>
+
+  <h1>Cadastro de Contatos</h1>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :kind_id %><br>
+    <%= f.collection_select(:kind_id, @kind_options_select, :id, :description) %>
+  </div>
+  <%= f.fields_for :address do |address_fields| %>
+    <div class="field">
+      <%= address_fields.label :street %><br>
+      <%= address_fields.text_field :street %>
+    </div>
+    <div class="field">
+      <%= address_fields.label :city %><br>
+      <%= address_fields.text_field :city %>
+    </div>
+    <div class="field">
+      <%= address_fields.label :state %><br>
+      <%= address_fields.select :state, options_for_select([["Acre", "AC"], ["Alagoas", "AL"], ["Amapá", "AP"], ["Amazonas", "AM"], ["Bahia", "BA"], ["Ceará", "CE"], ["Distrito Federal", "DF"], ["Espírito Santo", "ES"], ["Goiás", "GO"], ["Maranhão", "MA"], ["Mato Grosso", "MT"], ["Mato Grosso do Sul", "MS"], ["Minas Gerais", "MG"], ["Pará", "PA"], ["Paraíba", "PB"], ["Paraná", "PR"], ["Pernambuco", "PE"], ["Piauí", "PI"], ["Rio de Janeiro", "RJ"], ["Rio Grande do Norte", "RN"], ["Rio Grande do Sul", "RS"], ["Rondônia", "RO"], ["Roraima", "RR"], ["Santa Catarina", "SC"], ["São Paulo", "SP"], ["Sergipe", "SE"], ["Tocantins", "TO"]], @contact.address.state) %>
+    </div>
+  <% end %>
+  <div id="phones">
+    <%= f.fields_for :phones do |phones_fields| %>
+      <%= render partial: "phone_fields", locals: { f: phones_fields } %>
+    <% end %>
+    <div class="field">
+      <%= f.label :phones, "<span class='glyphicon glyphicon-phone-alt'>".html_safe %><br>
+      <%= link_to_add_association('Adicionar Telefone', f, :phones, class: "btn btn-primary") %>
+    </div>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :rmk %><br>
+    <%= f.text_area :rmk %>
+  </div>
+  <div class="actions">
+    <%= f.submit t('buttons.save'), class: "btn btn-primary" %>
+    <%= link_to t('buttons.back'), contacts_path, class: "btn btn-primary" %>
+  </div>
+<% end %>

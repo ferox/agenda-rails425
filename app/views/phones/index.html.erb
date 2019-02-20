@@ -1,0 +1,30 @@
+<div class="dark-matter">
+<p id="notice"><%= notice %></p>
+
+<h1><%= "#{t('headers.phone')} #{@phones.model.model_name.human(count: @phones.count)}" %></h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th><%= @phones.model.human_attribute_name("phone") %></th>
+      <th><%= @phones.model.human_attribute_name("contact") %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @phones.each do |phone| %>
+      <tr>
+        <td><%= phone.phone %> </td>
+        <td><%= phone.contact.name %></td>
+        <td><%= link_to t('buttons.show'), phone, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= paginate @phones %>
+<br>
+<%= link_to t('buttons.home'), root_path, class: "btn btn-primary" %>
+</div>

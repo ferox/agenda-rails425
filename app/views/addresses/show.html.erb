@@ -1,0 +1,25 @@
+<div class="dark-matter">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= Address.human_attribute_name("street") %>:</strong>
+  <%= @address.street %>
+</p>
+
+<p>
+  <strong><%= Address.human_attribute_name("city") %>:</strong>
+  <%= @address.city %>
+</p>
+
+<p>
+  <strong><%= Address.human_attribute_name("state") %>:</strong>
+  <%= @address.state %>
+</p>
+
+<p>
+  <strong><%= Address.human_attribute_name("contact") %>:</strong>
+  <%= @address.contact.try(:name) %>
+</p>
+
+<%= link_to t('buttons.back'), addresses_path, class: "btn btn-primary" %>
+</div>

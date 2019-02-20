@@ -1,0 +1,15 @@
+<div class="dark-matter">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong><%= Phone.human_attribute_name("phone") %>:</strong>
+  <%= @phone.phone %>
+</p>
+
+<p>
+  <strong><%= Phone.human_attribute_name("contact") %>:</strong>
+  <%= @phone.contact.name %>
+</p>
+
+<%= link_to t('buttons.back'), phones_path, class: "btn btn-primary" %>
+</div>

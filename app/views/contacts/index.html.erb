@@ -1,0 +1,38 @@
+<div class="dark-matter">
+<script>
+  $.notify("<%= notice %>", "success");
+</script>
+
+<h1><%= "#{t('headers.contact')} #{@contacts.model.model_name.human(count: @contacts.count)}" %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= @contacts.model.human_attribute_name("name") %></th>
+      <th><%= @contacts.model.human_attribute_name("email") %></th>
+      <th><%= @contacts.model.human_attribute_name("kind") %></th>
+      <th><%= @contacts.model.human_attribute_name("rmk") %></th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.email %></td>
+        <td><%= contact.kind.description %></td>
+        <td><%= contact.rmk %></td>
+        <td><%= link_to t('buttons.show'), contact, class: "btn btn-primary" %></td>
+        <td><%= link_to t('buttons.edit'), edit_contact_path(contact), class: "btn btn-primary" %></td>
+        <td><%= link_to t('buttons.destroy'), contact, method: :delete, data: { confirm: t('messages.destroy') }, class: "btn btn-primary" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= paginate @contacts %>
+<br>
+<%= link_to t('buttons.new'), new_contact_path, class: "btn btn-primary" %>
+<%= link_to t('buttons.home'), root_path, class: "btn btn-primary" %>
+</div>

@@ -1,0 +1,7 @@
+"pt-BR":
+  messages:
+    destroy: Você tem certeza?
+    errors: não permitiram salvar no Banco de Dados
+    created: Cadastrado com sucesso!
+    updated: Atualizado com sucesso!
+    destroyed: Apagado com sucesso!
