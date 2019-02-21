@@ -1,6 +1,6 @@
 class Contact < ActiveRecord::Base
   belongs_to :kind
-  has_one :address
+  has_one :address, dependent: :nullify
   has_many :phones, dependent: :nullify
 
   accepts_nested_attributes_for :address
